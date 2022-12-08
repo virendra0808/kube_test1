@@ -1,21 +1,23 @@
-apiVersion: apps/v1
 kind: Deployment
+apiVersion: apps/v1
 metadata:
-  name: nodeapp-deployment
-  labels:
-    app: nodeapp
+  name: test
 spec:
   replicas: 1
+  #number of replicas generated
   selector:
+    #assigns labels to the pods for future selection
     matchLabels:
-      app: nodeapp
+      app: app
+      # version: v01
   template:
     metadata:
       labels:
-        app: nodeapp 
+        app: app
+        # version: v01
     spec:
       containers:
-      - name: nodeserver
-        image: thetips4you/nodeapp:latest
+      - name: test1
+        image: httpd
         ports:
-        - containerPort: 3000
+        - containerPort: 80
